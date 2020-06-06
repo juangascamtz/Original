@@ -1,0 +1,44 @@
+﻿@model List<QuizApp.Models.EntityFramework.q_genelSonuc>
+@{
+    ViewBag.Title = "GrafikGoster";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+
+
+    <h2 style="margin: 10% 0% 5% 45%">Grafikler</h2>
+
+    <div class="row" style="padding-left: 40px;">
+
+        <div class="col-md-3" style="color:lightseagreen;">
+            <h5>Önceki sınavları görmek için seçiniz</h5>
+        </div>
+        <div class="col-md-9">
+            <select id="sinavlar">
+                @foreach (var sinav in Model)
+                {
+                    <option name="sinavNo" value="@sinav.quizCount">@sinav.quizCount</option>
+
+                }
+
+
+            </select>
+        </div>
+    </div>
+    <div class="row">
+     
+
+        <div class="col-md-6" id="grafik">
+            <img src="@Url.Action("AnlikGrafik","Profil",new { sinavNo = ViewBag.sinavNo})" />
+        </div>
+        <div class="col-md-6">
+            <img src="@Url.Action("GenelGrafik","Profil")" />
+        </div>
+    </div>
+</div>
+
+
+
+     
